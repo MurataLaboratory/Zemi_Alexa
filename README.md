@@ -18,3 +18,10 @@ $ source env/bin/activate
 ```
 brew cask intall ngrok
 ```
+
+
+# 注意事項
+
+- opensslのばーじょん
+
+

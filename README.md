@@ -9,4 +9,10 @@ brew cask install ngrock
 
 - Flask-Askのインストール
 
-できませんでした
+pipをダウングレードしましょう
+
+```
+pip install --force-reinstall pip==9.0.3
+pip install flask-ask
+```
+

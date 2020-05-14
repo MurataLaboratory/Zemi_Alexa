@@ -15,4 +15,3 @@ pipをダウングレードしましょう
 pip install --force-reinstall pip==9.0.3
 pip install flask-ask
 ```
-

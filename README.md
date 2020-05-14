@@ -24,4 +24,4 @@ brew cask intall ngrok
 
 - opensslのばーじょん
 
-
+仮想環境の中ではどうかわからないけど`openssl version`と打って`LibreSSL`って出るのはだめみたい

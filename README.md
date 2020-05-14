@@ -8,6 +8,14 @@
 $ source env/bin/activate
 ```
 
+# モジュールがない時
+
+以下のコマンドを入力してみてください
+
+```
+pip install -r requirement.txt
+```
+
 ## テストするには
 
 随時更新予定

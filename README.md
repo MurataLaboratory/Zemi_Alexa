@@ -16,7 +16,7 @@ docker build -t env .
 または
 
 ```
-docker pull 
+docker pull mori0097/alexa
 ```
 ## テストするには
 

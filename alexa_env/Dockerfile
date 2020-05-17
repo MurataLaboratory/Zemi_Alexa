@@ -36,4 +36,4 @@ WORKDIR code
 ADD requirement.txt /code
 RUN pip install -r requirement.txt
 
-
+RUN pip install https://github.com/johnwheeler/flask-ask/archive/master.zip

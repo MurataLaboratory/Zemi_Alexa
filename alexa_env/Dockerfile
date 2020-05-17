@@ -21,6 +21,7 @@ tk-dev \
 libffi-dev \
 liblzma-dev \
 openssl \
+python3-dev \
 && apt-get install -y locales curl python3-distutils \
 && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
 && python3 get-pip.py \
@@ -34,4 +35,5 @@ RUN echo "library installed !! "
 WORKDIR code
 ADD requirement.txt /code
 RUN pip install -r requirement.txt
+
 

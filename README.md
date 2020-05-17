@@ -1,19 +1,15 @@
 # オープンキャンパス用のチャットボット
 
+![test](./img/Github_card.jpg)
+
 # 環境の起動の仕方
 
-以下のコマンドを打ちましょう
+dockerで開発したい人は以下のコマンドで環境ができるはず
+仮想環境の中にソースがダウンロードされるはず
 
 ```
-$ source env/bin/activate
-```
-
-# モジュールがない時
-
-以下のコマンドを入力してみてください
-
-```
-pip install -r requirement.txt
+cd alexa_env
+docker build -t env .
 ```
 
 ## テストするには

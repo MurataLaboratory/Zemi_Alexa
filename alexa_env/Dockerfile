@@ -37,3 +37,6 @@ ADD requirement.txt /code
 RUN pip install -r requirement.txt
 
 RUN pip install https://github.com/johnwheeler/flask-ask/archive/master.zip
+
+RUN pip uninstall python-telegram-bot
+Run pip install python-telegram-bot

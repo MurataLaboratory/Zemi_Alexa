@@ -38,6 +38,14 @@ cd Zemi_alexa
 python3 alexa_bot.py
 ```
 
+僕はこんな感じでローカルのファイルをマウントしてます
+
+ポートの8080:80が開くはずです
+
+```
+$ docker run --name alexa -it -p 8080:80 -v ~/Documents/alexa:/code mori0097/alexa
+```
+
 # 注意事項
 
 - opensslのばーじょん

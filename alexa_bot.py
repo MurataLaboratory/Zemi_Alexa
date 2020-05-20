@@ -6,6 +6,10 @@ import ebdm_system
 app = Flask(__name__)
 ask = Ask(app, '/')
 
+@app.route('/test')
+def test():
+    return "hello world"
+
 # 対話システムを起動
 system = ebdm_system.EbdmSystem()
 
@@ -43,4 +47,4 @@ def talk(any_text_a, any_text_b, any_text_c):
 
 if __name__ == '__main__':
 #   port8080でflaskのサーバを起動
-    app.run(port=8080)
+    app.run(port=8080, host='0.0.0.0')

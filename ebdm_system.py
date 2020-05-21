@@ -41,7 +41,7 @@ class EbdmSystem:
 
     def initial_message(self, input):
         return {'utt': 'こんにちは。対話を始めましょう。', 'end':False}
-    
+
     def reply(self, input):
         max_score = -float('inf')
         result = ''
@@ -57,7 +57,7 @@ class EbdmSystem:
         results = self.es.search(index='dialogue_pair',
                     body={'query':{'match':{'query':utt}}, 'size':100,})
         return [(result['_source']['query'], result['_source']['response'], result["_score"]) for result in results['hits']['hits']]
-        
+
     def evaluate(self, utt, pair):
         #utt:     ユーザ発話
         #pair[0]: 用例ベースのtweet

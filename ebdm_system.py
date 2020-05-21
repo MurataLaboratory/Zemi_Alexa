@@ -40,7 +40,7 @@ class EbdmSystem:
         self.es = Elasticsearch()
 
     def initial_message(self, input):
-        return {'utt': 'こんにちは。対話を始めましょう。', 'end':False}
+        return {'utt': 'こんにちは。対話を始めましょう。よろしくおねがいします', 'end':False}
 
     def reply(self, input):
         max_score = -float('inf')

@@ -45,6 +45,7 @@ def talk(any_text_a, any_text_b, any_text_c):
 #   この発話で終了しない場合はquestion（ユーザの応答を待つ）で応答
     else: return question(mes['utt'])
 
+
 if __name__ == '__main__':
 #   port8080でflaskのサーバを起動
     app.run(port=8080, host='0.0.0.0')

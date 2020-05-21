@@ -42,7 +42,7 @@ python3 alexa_bot.py
 
 僕はこんな感じでローカルのファイルをマウントしてます
 
-ポートの8080:80が開くはずです
+ポートの8080:8080が開くはずです
 
 ```
 $ docker run --name alexa -it -p 8080:8080 -v ~/Documents/alexa:/code mori0097/alexa

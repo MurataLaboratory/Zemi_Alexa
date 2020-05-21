@@ -14,7 +14,7 @@ class WeatherSystem:
              '岩手', '島根', '広島', '徳島', '愛媛', '愛知', '新潟', '東京',
              '栃木', '沖縄', '滋賀', '熊本', '石川', '神奈川', '福井', '福岡', '福島', '秋田',
              '群馬', '茨城', '長崎', '長野', '青森', '静岡', '香川', '高知', '鳥取', '鹿児島']
-    
+
     # 都道府県名から緯度と経度を取得するための辞書
     latlondic = {'北海道': (43.06, 141.35), '青森': (40.82, 140.74), '岩手': (39.7, 141.15), '宮城': (38.27, 140.87),
                  '秋田': (39.72, 140.1), '山形': (38.24, 140.36), '福島': (37.75, 140.47), '茨城': (36.34, 140.45),
@@ -32,19 +32,19 @@ class WeatherSystem:
     # 状態とシステム発話を紐づけた辞書
     uttdic = {"ask_place": "地名を言ってください",
               "ask_date": "日付を言ってください",
-              "ask_type": "情報種別を言ってください"}    
+              "ask_type": "情報種別を言ってください"}
 
     current_weather_url = 'http://api.openweathermap.org/data/2.5/weather'
     forecast_url = 'http://api.openweathermap.org/data/2.5/forecast'
-    appid = '' # 自身のAPPIDを入れてください    
-    
+    appid = '' # 自身のAPPIDを入れてください
+
     def __init__(self):
         # Qtに関するおまじない
         app = QtCore.QCoreApplication()
 
         # 対話セッションを管理するための辞書
         self.sessiondic = {}
-    
+
     # テキストから都道府県名を抽出する関数．見つからない場合は空文字を返す．
     def get_place(self, text):
         for pref in self.prefs:
@@ -61,7 +61,7 @@ class WeatherSystem:
         else:
             return ""
 
-    # テキストに「天気」もしくは「気温」があればそれを返す．見つからない場合は空文字を返す．    
+    # テキストに「天気」もしくは「気温」があればそれを返す．見つからない場合は空文字を返す．
     def get_type(self, text):
         if "天気" in text:
             return "天気"
@@ -71,7 +71,7 @@ class WeatherSystem:
             return ""
 
     def get_current_weather(self, lat,lon):
-        # 天気情報を取得    
+        # 天気情報を取得
         response = requests.get("{}?lat={}&lon={}&lang=ja&units=metric&APPID={}".format(self.current_weather_url,lat,lon,self.appid))
         return response.json()
 
@@ -100,7 +100,7 @@ class WeatherSystem:
         text = input["utt"]
         sessionId = input["sessionId"]
 
-        self.el  = QtCore.QEventLoop()        
+        self.el  = QtCore.QEventLoop()
 
         # SCXMLファイルの読み込み
         sm  = QtScxml.QScxmlStateMachine.fromFile('states.scxml')
@@ -127,7 +127,7 @@ class WeatherSystem:
 
         sm = self.sessiondic[sessionId]["statemachine"]
         current_state = sm.activeStateNames()[0]
-        print("current_state=", current_state)        
+        print("current_state=", current_state)
 
         # ユーザ入力を用いて状態遷移
         if current_state == "ask_place":
@@ -162,7 +162,7 @@ class WeatherSystem:
             _type = self.sessiondic[sessionId]["type"]
 
             lat = self.latlondic[place][0] # placeから緯度を取得
-            lon = self.latlondic[place][1] # placeから経度を取得       
+            lon = self.latlondic[place][1] # placeから経度を取得
             print("lat=",lat,"lon=",lon)
             if date == "今日":
                 cw = self.get_current_weather(lat,lon)

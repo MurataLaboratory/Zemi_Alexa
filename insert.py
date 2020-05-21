@@ -14,4 +14,3 @@ def load():
 
 if __name__ == '__main__':
     print(helpers.bulk(es, load()))
-

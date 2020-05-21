@@ -24,7 +24,7 @@ def get_date(text):
     else:
         return ""
 
-# テキストに「天気」もしくは「気温」があればそれを返す．見つからない場合は空文字を返す．    
+# テキストに「天気」もしくは「気温」があればそれを返す．見つからない場合は空文字を返す．
 def get_type(text):
     if "天気" in text:
         return "天気"
@@ -74,12 +74,12 @@ while True:
         date = get_date(text)
         if date != "":
             sm.submitEvent("date")
-            el.processEvents()                   
+            el.processEvents()
     elif current_state == "ask_type":
         _type = get_type(text)
         if _type != "":
             sm.submitEvent("type")
-            el.processEvents()                   
+            el.processEvents()
 
     # 遷移先の状態を取得
     current_state = sm.activeStateNames()[0]
@@ -92,9 +92,9 @@ while True:
     else:
         # その他の遷移先の場合は状態に紐づいたシステム発話を生成
         sysutt = uttdic[current_state]
-        print("SYS>", sysutt)           
+        print("SYS>", sysutt)
 
 # 終了発話
-print("ご利用ありがとうございました")       
+print("ご利用ありがとうございました")
 
 # end of file

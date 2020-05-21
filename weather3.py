@@ -45,7 +45,7 @@ def get_date(text):
     else:
         return ""
 
-# テキストに「天気」もしくは「気温」があればそれを返す．見つからない場合は空文字を返す．    
+# テキストに「天気」もしくは「気温」があればそれを返す．見つからない場合は空文字を返す．
 def get_type(text):
     if "天気" in text:
         return "天気"
@@ -55,7 +55,7 @@ def get_type(text):
         return ""
 
 def get_current_weather(lat,lon):
-    # 天気情報を取得    
+    # 天気情報を取得
     response = requests.get("{}?lat={}&lon={}&lang=ja&units=metric&APPID={}".format(current_weather_url,lat,lon,appid))
     return response.json()
 
@@ -78,7 +78,7 @@ def get_tomorrow_weather(lat,lon):
         # 明日の正午以降のデータになった時点でその天気情報を返す
         if dt >= timestamp:
             return dic["list"][i]
-    return ""    
+    return ""
 
 # Qtに関するおまじない
 app = QtCore.QCoreApplication()
@@ -121,12 +121,12 @@ while True:
         date = get_date(text)
         if date != "":
             sm.submitEvent("date")
-            el.processEvents()                   
+            el.processEvents()
     elif current_state == "ask_type":
         _type = get_type(text)
         if _type != "":
             sm.submitEvent("type")
-            el.processEvents()                   
+            el.processEvents()
 
     # 遷移先の状態を取得
     current_state = sm.activeStateNames()[0]
@@ -136,7 +136,7 @@ while True:
     if current_state == "tell_info":
         print("お伝えします")
         lat = latlondic[place][0] # placeから緯度を取得
-        lon = latlondic[place][1] # placeから経度を取得       
+        lon = latlondic[place][1] # placeから経度を取得
         print("lat=",lat,"lon=",lon)
         if date == "今日":
             cw = get_current_weather(lat,lon)
@@ -147,16 +147,16 @@ while True:
         elif date == "明日":
             tw = get_tomorrow_weather(lat,lon)
             if _type == "天気":
-                print(tw["weather"][0]["description"]+"です")               
+                print(tw["weather"][0]["description"]+"です")
             elif _type == "気温":
                 print(str(tw["main"]["temp"])+"度です")
         break
     else:
         # その他の遷移先の場合は状態に紐づいたシステム発話を生成
         sysutt = uttdic[current_state]
-        print("SYS>", sysutt)           
+        print("SYS>", sysutt)
 
 # 終了発話
-print("ご利用ありがとうございました")       
+print("ご利用ありがとうございました")
 
 # end of file
